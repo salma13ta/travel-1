@@ -1,0 +1,221 @@
+:root{
+    --primary-color: hsl(199, 100%, 33%);
+    --secondary-color: hsl(187, 85%, 43%);
+    --gradient-btn: linear-gradient(to right, hsl(187 ,85% , 43%) , hsl(199 , 100% , 33%));
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #666;
+    --whiteColorDeam: hsl(0, 0%, 93%);
+    --gray-color: rgb(190,190,190);
+    --input-color: rgb(239 , 239 , 239);
+    --body-color:rgb(240 , 240 ,246);
+    --cardBG: rgb(225, 225, 235);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+}
+
+.navbarSection {
+    position: relative;
+}
+
+.header{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--whiteColorDeam);
+    width: 100%;
+    padding: 1rem 2rem;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(2,15,29,0.1);
+}
+
+.LogeDiv .logo {
+    text-decoration: none;
+    color: var(--black-color);
+}
+
+.LogeDiv .logo h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.LogeDiv .logo .icon {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+}
+
+/* Animated open/close */
+.navbar {
+    display: flex;
+    align-items: center;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.activeNavbar {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.navLists {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+}
+
+.navItem {
+    position: relative;
+}
+
+.navLink {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.1s ease;
+}
+
+.navLink:hover {
+    color: var(--primary-color);
+}
+
+.btn {
+    background: var(--gradient-btn);
+    border: none;
+    border-radius: 3rem;
+    padding: 0.6rem 1.5rem;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+.btn a {
+    text-decoration: none;
+    color: var(--white-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.closeNavbar {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    opacity: 0.85;
+}
+
+.closeNavbar .icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.toggleNavbar {
+    display: block;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    opacity: 0.85;
+}
+
+.toggleNavbar .icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: transform 0.25s ease;
+}
+
+.toggleNavbar.isOpen .icon {
+    transform: rotate(90deg) scale(1.05);
+}
+
+.toggleNavbar:hover {
+    opacity: 0;
+  transition: all 0.3s;
+  border: rgba(185, 235, 250, 0.5);
+  transform: scale(1.2,1.2);
+}
+.closeNavbar , .toggleNavbar{
+    display: none;
+
+}
+@media screen and (max-width: 880px) {
+    .header {
+        padding: 1rem;
+    }
+    
+    .navbar {
+        position: absolute;
+        background: var(--whiteColorDeam);
+        height: max-content;
+        width: 80%;
+        border-radius: 1rem;
+        top: 6rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2000;
+        box-shadow: 0 2px 4px rgba(2,15,29,0.904);
+        transition: 0.3s ease-in-out;
+        padding: 1rem;
+        display: block;
+        opacity: 0;
+        transform: translate(-50%, -8px);
+    }
+
+    .activeNavbar {
+        display: block;
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    .navLists {
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        margin: auto;
+        padding: 0.5rem 0;
+        gap: 1rem;
+    }
+    
+    .navItem {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .navLink {
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+    
+    .btn {
+        margin-top: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .closeNavbar {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+    
+    .toggleNavbar {
+        display: block;
+    }
+}
