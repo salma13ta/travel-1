@@ -1,0 +1,154 @@
+:root{
+    --primary-color: hsl(199, 100%, 33%);
+    --secondary-color: hsl(187, 89%, 17%);
+    --gradient-btn: linear-gradient(to right, hsl(187 ,85% , 43%) , hsl(199 , 100% , 33%));
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #666;
+    --whiteColorDeam: hsl(0, 0%, 93%);
+    --gray-color: rgb(190,190,190);
+    --input-color: rgb(239 , 239 , 239);
+    --body-color:rgb(240 , 240 ,246);
+    --cardBG: rgb(225, 225, 235);
+    --cardHover: rgb(245, 245, 245);
+}
+.main{
+    width: 100%;
+
+  .secTitle{
+    .title{
+        position: relative;
+        width: max-content; 
+        color: var(--text-color);
+        z-index: 2;
+        margin: 2rem 12px;
+
+        &::after{
+            content: '';
+            position: absolute;
+            background-color: var(--secondary-color);
+            width: 124px;
+            height: 5px;
+            right: 0;
+            bottom: 5px;
+            z-index: -1;
+        }
+  } 
+}
+.secContent{
+    grid-template-columns: repeat(2,1fr);
+    justify-content: center;
+    gap: 2rem;
+    
+    .singleDestinationCard{
+        height: 100%;
+        display: grid;
+        row-gap: 10px;
+        padding: var(--cardBG);
+        border-radius: 10px;
+        align-items: center;
+        background: var(--cardBG);
+        box-shadow: 0 2px 4px rgba(140,140,140,0.549);
+        overflow: hidden;
+        transition: 0.3s ease;
+        &:hover{
+            background: var(--cardHover);
+            transform: translateY(-10px);
+            transition: 0.3s ease;
+            box-shadow: 0 4px 8px rgba(140,140,114,0.185);
+        }
+
+
+        .imageDiv{
+            height: 180px;
+            width: 100%;
+            overflow: hidden;
+
+                img{
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    transition: 2s ease;
+                }
+                &:hover{
+                    img{
+                        transform: scale(1.1);
+                        transition: 2s ease;
+                    }
+                }
+            }
+        }
+        .cardInfo{
+            padding: 1rem;
+            .destTitle{
+                font-size: 1.25rem;
+                color: var(--text-color);
+            }
+            .continent{
+                gap: 0.5rem;
+                .icon{
+                    font-size: 18px;
+                    color: var(--text-color);
+                }
+                .name{
+                    color: var(--text-color);
+                    font-size: 14px;
+                    font-weight: 500;
+                }
+            }
+            .cardPrice{
+                width: 100%;
+                justify-content: space-between;
+                padding: 1rem 0;
+                margin: 1rem 0;
+                border-top: 1px solid var(--gray-color);
+                border-bottom: 1px solid var(--gray-color);
+                .price{
+                    color: var(--text-color);
+                    max-width: 100px;
+                    line-height: 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    small{
+                        text-align: center;
+                        background: var(--gradient-btn);
+                        border-radius: 1rem;
+                        padding: 5px 3px;
+                        margin-left:2px ;                        ;
+                        font-size: 10px;
+                        color: var(--white-color);
+                    }
+                }
+                .price{
+                    color: var(--black-color);
+                }
+    }
+    .desc{
+        font-size: 13.5px;
+        color: var(--text-color);
+        font-weight: 500;
+    }
+    .btn{
+        margin-top: 1rem;
+        color: var(--white-color);
+        font-weight: 600;
+        justify-content: space-between;
+        gap: .5rem;
+         
+        .icon{
+            align-self: center;
+            font-size: 18px;
+
+        }
+    }
+ }
+}
+
+@media screen and (max-width: 1000px) {
+    .secContent{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+}
+
