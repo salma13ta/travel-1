@@ -1,4 +1,4 @@
-import React ,{useEffect} from 'react';
+import React ,{useEffect, useState} from 'react';
 import './Home.scss';
 import video from '../video-img/video/istockphoto-1124530677-640_adpp_is.mp4'
 import { GrLocation } from "react-icons/gr";
@@ -14,6 +14,8 @@ import Aos from 'aos';
 import'aos/dist/aos.css'
 
 const Home = () => {
+    const [price, setPrice] = useState(5000);
+
 //add animation..................
 useEffect(()=>{
     Aos.init({duration:2000})
@@ -61,11 +63,18 @@ useEffect(()=>{
                              Max price:
                             </label>
                             <h3 className='total'>
-                                $5000
+                                ${price}
                             </h3>                      
                             </div>
                         <div className="input flex">
-                            <input type='range' max="5000" min="1000"/>
+                            <input 
+                                type='range' 
+                                max="5000" 
+                                min="500" 
+                                step="500"
+                                value={price}
+                                onChange={(e) => setPrice(Number(e.target.value))}
+                            />
                         </div>
                     </div>
 

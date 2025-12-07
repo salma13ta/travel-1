@@ -70,7 +70,22 @@ img , video{
 }
 input{
     font-size: 100%;
+    background-color: var(--white-color);
+    box-shadow: none;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    transition: all 0.3s ease;
 }
+input:focus{
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(var(--primary-color), 0.5);
+}
+
 body{
     background-color: var(--body-color);
 }

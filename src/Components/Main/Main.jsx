@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Main.scss';
 import './Main.css';
 import { HiOutlineLocationMarker } from "react-icons/hi";
@@ -191,6 +192,8 @@ const data = [
     ]
   
 const Main = () => {
+    const navigate = useNavigate();
+
 //add animation..................
   useEffect(()=>{
     Aos.init({duration:2000})
@@ -222,7 +225,7 @@ const Main = () => {
 
                         <div className="cardPrice flex">
                             <div className="price">
-                                <span>{category .toUpperCase()} {subCategory .toUpperCase()}<small>+1</small></span>
+                                <span>{category.toUpperCase()} {subCategory.toUpperCase()}<small>+1</small></span>
                                 </div>
                             <div className="priceDesc">
                                 <h5>${price}</h5>
@@ -232,7 +235,26 @@ const Main = () => {
                             <div className="desc">
                                 <p>{shortDescription}</p>
                             </div>
-                            <button className="btn flex"> DETATAILS <BsClipboard2Check className='icon'/>
+                            <button 
+                                className="btn flex" 
+                                onClick={() => {
+                                    sessionStorage.setItem('fromMain', 'true');
+                                    navigate('/booking', { 
+                                        state: { 
+                                            destination: {
+                                                title,
+                                                country,
+                                                category,
+                                                subCategory,
+                                                price,
+                                                shortDescription,
+                                                thumbnail
+                                            }
+                                        } 
+                                    });
+                                }}
+                            > 
+                                DETATAILS <BsClipboard2Check className='icon'/>
                             </button>
                         </div>
                     </div>

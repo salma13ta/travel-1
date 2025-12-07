@@ -1,0 +1,416 @@
+:root{
+    --primary-color: hsl(199, 100%, 33%);
+    --secondary-color: hsl(187, 89%, 17%);
+    --gradient-btn: linear-gradient(to right, hsl(187 ,85% , 43%) , hsl(199 , 100% , 33%));
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #666;
+    --whiteColorDeam: hsl(0, 0%, 93%);
+    --gray-color: rgb(190,190,190);
+    --input-color: rgb(239 , 239 , 239);
+    --body-color:rgb(240 , 240 ,246);
+    --cardBG: rgb(225, 225, 235);
+    --cardHover: rgb(245, 245, 245);
+}
+.booking {
+    width: 100% ;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    
+    .overlay{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: rgb(95, 114, 121);
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        mix-blend-mode: hard-light;
+    }
+    video{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        z-index: 0;
+        opacity: 0.65;
+
+    }
+
+    .BookingContent{
+        position: relative;
+        width: 100%;
+        height: max-content;
+        padding: 1rem 1.5rem 8rem;
+        display: flex;
+        row-gap: 3rem;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        margin: auto;
+        color: var(--white-color);
+        z-index: 10;
+    }
+
+    .textDiv{
+        .bookingTitle{
+            font-size: 2.5rem;
+            color: var(--white-color);
+            font-weight: 600;
+        }
+        .destinationTitle{ 
+            font-size: 25px;
+            white-space: nowrap;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: .28px var(--white-color);
+            font-weight: 600;
+        }
+    }
+    .bookingDescription{
+        font-size: 1.5rem;
+        color: var(--white-color);
+        font-weight: 500;
+        margin-top: 1rem;
+    }
+
+    // إلغاء opacity: 0 من AOS
+    [data-aos^="fade"] {
+        opacity: 1 !important;
+    }
+
+    .cardDiv {
+        position: relative;
+        padding: 2rem 1rem;
+        background: rgba(255, 255, 255, 0.847);
+        border-radius: 10px;
+        gap: 1.5rem;
+        max-width: 653px;
+        margin: 0 20%;
+
+        @media (max-width: 768px) {
+            margin: 0 auto;
+        }
+    }
+
+    .singleDestinationCard {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .formField {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    label {
+        display: block;
+        color: var(--text-color);
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    .inputWrapper {
+        position: relative;
+    }
+
+    .input {
+        height: 50px;
+        padding: 0 1rem;
+        background: var(--white-color);
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        cursor: pointer;
+        transition: border-color 0.3s;
+
+        &:hover {
+            border-color: var(--primary-color);
+        }
+
+        input {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-color);
+            cursor: pointer;
+            margin: 2px 10px;
+
+            &::placeholder {
+                color: #999;
+                font-size: 14px;
+            }
+        }
+
+        .dropdownIcon {
+            font-size: 24px;
+            color: var(--text-color);
+            margin-right: 0.5rem;
+        }
+
+        .icon {
+            font-size: 20px;
+            color: var(--text-color);
+        }
+    }
+
+    .dropdownList {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--white-color);
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-top: 4px;
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .dropdownItem {
+        padding: 12px 1rem;
+        font-size: 14px;
+        color: var(--text-color);
+        cursor: pointer;
+        transition: background-color 0.2s;
+        gap: 0.75rem;
+
+        &:hover {
+            background-color: var(--input-color);
+        }
+
+        &:first-child {
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        &:last-child {
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+    }
+
+    .flagIcon {
+        width: 24px;
+        height: 18px;
+        object-fit: cover;
+        border-radius: 2px;
+    }
+
+    .selectedNationality {
+        gap: 0.75rem;
+        width: 100%;
+        
+        span {
+            font-size: 14px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+    }
+
+    .errorText {
+        display: block;
+        color: #ff4444;
+        font-size: 12px;
+        margin-top: 4px;
+    }
+
+    .customLocationField {
+        margin-top: 1rem;
+        
+        .input {
+            height: 50px;
+        }
+    }
+
+    .locationBtn {
+        background: transparent;
+        color: var(--text-color);
+        border: none;
+        padding: 0.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s;
+
+        &:hover {
+            background: var(--primary-color);
+        }
+
+        .icon {
+            font-size: 20px;
+        }
+    }
+
+    .daysInput {
+        padding: 0;
+        gap: 0;
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        overflow: hidden;
+        background: var(--white-color);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        
+        &:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(25, 113, 194, 0.15);
+        }
+        
+        input {
+            text-align: center;
+            margin: 0;
+            flex: 1;
+            border: none;
+            border-left: 2px solid #e0e0e0;
+            border-right: 2px solid #e0e0e0;
+            padding: 1rem;
+            font-size: 18px;
+            font-weight: 700;
+            background: #f8f9fa;
+            
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                appearance: none;
+                margin: 0;
+            }
+            
+            &[type=number] {
+                -moz-appearance: textfield;
+                appearance: textfield;
+            }
+            
+            &:focus {
+                outline: none;
+                background: var(--white-color);
+                border-left-color: var(--primary-color);
+                border-right-color: var(--primary-color);
+            }
+        }
+    }
+
+    .daysBtn {
+        background: var(--gradient-btn);
+        border: none;
+        padding: 1rem 1.25rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 55px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        &:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(25, 113, 194, 0.3);
+            
+            &::before {
+                opacity: 1;
+            }
+        }
+
+        &:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        &:first-child {
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+        }
+
+        &:last-child {
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        .icon {
+            font-size: 22px;
+            color: var(--white-color);
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: #ccc;
+            
+            &:hover {
+                transform: none;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+
+    .priceDesc {
+        margin-top: 1rem;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--gray-color);
+
+        .priceInfo {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .priceText {
+            font-size: 14px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .discountText {
+            font-size: 12px;
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        .totalPrice {
+            h5 {
+                font-size: 1.5rem;
+                color: var(--primary-color);
+                font-weight: 700;
+                margin: 0;
+            }
+        }
+    }
+}
