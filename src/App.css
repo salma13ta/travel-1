@@ -27,7 +27,7 @@ li{
     list-style: none;
 }
 .section{
-    padding: 4rem 0 2rem ;
+    padding: 1rem 0 2rem ;
 }
 .container{
     padding-left: 1.5rem;
@@ -52,6 +52,7 @@ li{
     border: none;
     cursor: pointer;
     outline: none;
+    color: var(--white-color);
 }
 .btn a{
     font-weight:500;

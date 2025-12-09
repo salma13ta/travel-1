@@ -13,6 +13,7 @@ const Information = () => {
     const passengersData = location.state?.passengersData;
     const [paymentMethod, setPaymentMethod] = useState('online');
     const [agreeToTerms, setAgreeToTerms] = useState(false);
+    const [showTermsModal, setShowTermsModal] = useState(false);
 
     const travelerTypes = {
         'family': 'Family',
@@ -126,21 +127,125 @@ const Information = () => {
 
                         {/* أوافق علي الشروط والاحكام */}
                         <div className="termsSection">
-                            <label className="termsCheckbox flex">
-                                <input 
-                                    type="checkbox" 
-                                    checked={agreeToTerms}
-                                    onChange={(e) => setAgreeToTerms(e.target.checked)}
-                                />
-                                <span>I agree to the terms and conditions</span>
-                            </label>
+                            <div className="termsHeader flex">
+                                <div className="termsCheckbox flex">
+                                    <input 
+                                        type="checkbox" 
+                                        checked={agreeToTerms}
+                                        onChange={(e) => setAgreeToTerms(e.target.checked)}
+                                    />
+                                    <button
+                                        type="button"
+                                        className="termsTextBtn"
+                                        onClick={() => setShowTermsModal(true)}
+                                    >
+                                        I agree to the terms and conditions
+                                    </button>
+                                </div>
+                            </div>
                         </div>
+
+                        {showTermsModal && (
+                            <div className="termsModalOverlay">
+                                <div className="termsModal">
+                                    <div className="modalHeader flex">
+                                        <h3>Trip Terms</h3>
+                                        <button 
+                                            type="button" 
+                                            className="closeBtn" 
+                                            onClick={() => setShowTermsModal(false)}
+                                        >
+                                            ×
+                                        </button>
+                                    </div>
+                                    <div className="modalBody">
+                                        <ul>
+                                            <li>
+                                                <strong>1) Booking & Payment</strong>
+                                                <ul>
+                                                    <li>Your booking is confirmed after paying the deposit or required amount shown on the trip page.</li>
+                                                    <li>The remaining balance must be paid before the trip date according to the set schedule.</li>
+                                                    <li>All prices may change based on seat availability or company updates.</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong>2) Cancellation Policy</strong>
+                                                <ul>
+                                                    <li>If the customer cancels before the trip date, cancellation fees apply according to company policy.</li>
+                                                    <li>If the company cancels the trip, the customer may receive a full refund or transfer the amount to another trip.</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong>3) Documents & Travel Requirements</strong>
+                                                <ul>
+                                                    <li>The customer is responsible for ensuring the validity of required documents (ID, passport, visa if applicable).</li>
+                                                    <li>The company is not responsible for travel denial due to missing or incorrect documents.</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong>4) Itinerary & Schedule</strong>
+                                                <ul>
+                                                    <li>Activities or timings may be adjusted due to operations, weather, or official instructions.</li>
+                                                    <li>The company will provide suitable alternatives without affecting the overall experience quality.</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong>5) Conduct & Personal Responsibility</strong>
+                                                <ul>
+                                                    <li>The customer must follow public regulations and the trip leader’s instructions.</li>
+                                                    <li>The company is not liable for loss or damage of personal belongings due to misuse or negligence by the customer.</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong>6) Delays & Punctuality</strong>
+                                                <ul>
+                                                    <li>If the customer is late for departure, the company is not responsible for missed trips and no refund is due.</li>
+                                                    <li>Punctuality is an essential condition for participation.</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong>7) Liability Limits</strong>
+                                                <ul>
+                                                    <li>The company is not liable for force majeure events such as flight delays, road conditions, or governmental decisions.</li>
+                                                    <li>Completing the booking on the website means the customer accepts all terms.</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong>8) Support & Contact</strong>
+                                                <ul>
+                                                    <li>For inquiries or feedback, please reach our customer support via the Contact Us page.</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div className="modalFooter flex">
+                                        <button 
+                                            type="button" 
+                                            className="btn btn-secondary" 
+                                            onClick={() => setShowTermsModal(false)}
+                                        >
+                                            Cancel
+                                        </button>
+                                        <button 
+                                            type="button" 
+                                            className="btn btn-primary" 
+                                            onClick={() => {
+                                                setAgreeToTerms(true);
+                                                setShowTermsModal(false);
+                                            }}
+                                        >
+                                            Agree
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
 
                         {/* زر طلب التأشيرة */}
                         <button 
                             className='btn btn-primary requestVisaBtn'
                             disabled={!agreeToTerms}
-                            onClick={() => navigate('/')}
+                            onClick={() => navigate('/', { state: { showSuccess: true } })}
                         >
                             Request Visa
                         </button>

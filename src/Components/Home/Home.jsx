@@ -1,6 +1,7 @@
 import React ,{useEffect, useState} from 'react';
 import './Home.scss';
 import video from '../video-img/video/istockphoto-1124530677-640_adpp_is.mp4'
+import successGif from '../video-img/video/Travel is fun.gif';
 import { GrLocation } from "react-icons/gr";
 import { HiFilter } from "react-icons/hi";
 import { FiFacebook } from "react-icons/fi";
@@ -8,6 +9,8 @@ import { FaInstagram } from "react-icons/fa";
 import { SiTripadvisor } from "react-icons/si";
 import { FaList } from "react-icons/fa";
 import { TbApps } from "react-icons/tb";
+import { HiCheckCircle } from "react-icons/hi";
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 import Aos from 'aos';
@@ -15,6 +18,9 @@ import'aos/dist/aos.css'
 
 const Home = () => {
     const [price, setPrice] = useState(5000);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
 
 //add animation..................
 useEffect(()=>{
@@ -22,8 +28,38 @@ useEffect(()=>{
 
     },[])
 
+useEffect(() => {
+    if (location.state?.showSuccess) {
+        setShowSuccessModal(true);
+        // clear the state so it doesn't show again on refresh/back
+        navigate('/', { replace: true, state: {} });
+    }
+}, [location.state, navigate]);
+
     return (
         <section className='home'>
+            {showSuccessModal && (
+                <div className="successModalOverlay">
+                    <div className="successModal">
+                        <div className="successHeader">
+                            <div className="successTitle flex">
+                            </div>
+                            <button className="closeBtn" onClick={() => setShowSuccessModal(false)}>×</button>
+                        </div>
+                        <div className="successBody">
+                            <img
+                                className="successGif"
+                                src={successGif}
+                                alt="Success"
+                            />
+                            <p>Your visa request was submitted successfully.</p>
+                        </div>
+                        <div className="successFooter">
+                            <button className="btn btn-primary" onClick={() => setShowSuccessModal(false)}>Done</button>
+                        </div>
+                    </div>
+                </div>
+            )}
             <div className="overlay"></div>
             <video src={video} muted autoPlay loop type = "video/mp4"></video>
 
